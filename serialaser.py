@@ -89,9 +89,9 @@ def mainprog(argv):
                           dest="verbose", default=True, 
                           help="don't print program lines to stdout.")
         (options, args) = parser.parse_args()
-        program = open(options.fileName)
-        send_progs(program, options.ePack, options.verbose)
-        program.close()
+
+        with open(options.fileName) as program:
+            send_progs(program, options.ePack, options.verbose)
 
 if __name__ == "__main__":
         if len(argv) > 1:
